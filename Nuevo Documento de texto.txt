@@ -1,0 +1,114 @@
+# Calculadora de IMC con Historial y Gráfico de Progreso
+
+**Autor:** Christian Lera
+
+Aplicación profesional de escritorio para calcular el Índice de Masa Corporal (IMC), guardar un historial de mediciones y visualizar la evolución mediante gráficos interactivos. Desarrollada en Python con Tkinter y Matplotlib.
+
+## Características
+
+- Cálculo instantáneo de IMC con validación de datos.
+- Clasificación según estándares de la OMS (bajo peso, normal, sobrepeso, obesidad grados I, II y III).
+- Persistencia de datos: historial guardado automáticamente en `historial_imc.json`.
+- Visualización gráfica de la evolución del IMC con:
+  - Puntos coloreados por categoría.
+  - Línea de tendencia.
+  - Media móvil suavizada.
+  - Zonas de color según rangos de IMC.
+  - Estadísticas resumen en el gráfico.
+- Gestión completa del historial:
+  - Ver todos los registros en una tabla.
+  - Eliminar registros individuales.
+  - Limpiar todo el historial.
+  - Doble clic para cargar un registro anterior en los campos de cálculo.
+- Interfaz profesional con temas modernos (ttk).
+- Manejo robusto de errores y validaciones.
+
+## Requisitos del Sistema
+
+- **Sistema operativo:** Windows / Linux / macOS
+- **Python:** Versión 3.7 o superior
+- **Dependencias:** Ver `requirements.txt`
+
+## Instalación y Ejecución
+
+### Opción 1: Usando scripts automáticos (Windows)
+
+1. Asegúrate de tener Python instalado. Puedes descargarlo desde [python.org](https://www.python.org/downloads/).
+2. Ejecuta `ejecutar.bat` (para CMD) o `ejecutar.ps1` (para PowerShell) haciendo doble clic.
+   - Los scripts verificarán/instalarán las dependencias automáticamente y lanzarán la aplicación.
+
+### Opción 2: Manual (cualquier sistema operativo)
+
+1. Clona o descarga este repositorio.
+2. Abre una terminal en la carpeta del proyecto.
+3. (Opcional pero recomendado) Crea un entorno virtual:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate   # Linux/macOS
+   venv\Scripts\activate      # Windows
+   ```
+4. Instala las dependencias:
+   ```bash
+   pip install -r requirements.txt
+   ```
+5. Ejecuta la aplicación:
+   ```bash
+   python CalculadoraIMC.py
+   ```
+
+## Uso de la Aplicación
+
+1. **Ingresar datos:** Introduce peso (kg) y altura (m) en los campos correspondientes.
+2. **Calcular IMC:** Presiona el botón "Calcular IMC" o la tecla Enter.
+3. **Guardar registro:** Si deseas conservar el cálculo en el historial, confirma el diálogo.
+4. **Ver progreso:** El gráfico se actualiza automáticamente mostrando la evolución.
+5. **Gestionar historial:**
+   - Selecciona una fila y presiona "Eliminar Seleccionado".
+   - Usa "Limpiar Todo" para borrar todo el historial.
+   - Haz doble clic en un registro para cargar sus datos en los campos de entrada.
+6. **Actualizar gráfico:** Puedes refrescar el gráfico manualmente con el botón correspondiente.
+
+## Estructura del Proyecto
+
+```
+/
+├── CalculadoraIMC.py        # Código fuente principal
+├── historial_imc.json        # Archivo de datos (se genera automáticamente)
+├── requirements.txt          # Dependencias del proyecto
+├── ejecutar.bat              # Script de inicio para CMD (Windows)
+├── ejecutar.ps1              # Script de inicio para PowerShell (Windows)
+└── README.md                 # Este archivo
+```
+
+## Dependencias
+
+- `matplotlib>=3.5.0` - Generación de gráficos de progreso.
+- (Tkinter viene incluido con Python estándar en Windows/macOS; en Linux puede requerir `python3-tk`)
+
+## Notas importantes
+
+- **Primera ejecución:** Si no existe `historial_imc.json`, se creará automáticamente.
+- **Gráfico:** Necesita al menos un registro para mostrarse. De lo contrario, verás un mensaje informativo.
+- **Rangos válidos:** Peso entre 1 y 500 kg; altura entre 0.1 y 3.0 metros.
+- **Persistencia:** Los datos se guardan inmediatamente después de cada modificación.
+
+## Posibles problemas y soluciones
+
+| Problema | Solución |
+|----------|----------|
+| `ModuleNotFoundError: No module named 'matplotlib'` | Ejecuta `pip install matplotlib` o usa los scripts de inicio que lo instalan automáticamente. |
+| El gráfico no se muestra o da error de backend | El código ya fuerza `matplotlib.use('TkAgg')`. Si persiste, reinstala matplotlib. |
+| En Linux: `tkinter` no encontrado | Instala: `sudo apt-get install python3-tk` (Debian/Ubuntu) o su equivalente en otras distribuciones. |
+| El script `.ps1` no se ejecuta por políticas de seguridad | Abre PowerShell como administrador y ejecuta `Set-ExecutionPolicy RemoteSigned -Scope CurrentUser`. |
+
+## Capturas de pantalla
+
+*(Incluye aquí capturas de la aplicación si lo deseas)*
+
+## Licencia
+
+Este proyecto es de uso libre con fines educativos y profesionales.
+
+## Contacto
+
+**Autor:** Christian Lera
